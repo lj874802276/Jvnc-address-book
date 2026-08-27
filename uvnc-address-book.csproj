@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>UvncAddressBook</AssemblyName>
     <RootNamespace>UvncAddressBook</RootNamespace>
+    <ApplicationIcon>assets\app.ico</ApplicationIcon>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
   </PropertyGroup>
