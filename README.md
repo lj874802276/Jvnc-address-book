@@ -27,9 +27,9 @@ Built for internal-network Ops — hospital check-up centers, server rooms, camp
 
 ## 📸 Screenshots
 
-> 📌 *Screenshots are **not included yet**. To add one: run the app, capture your main window, save it as `docs/screenshot-main.png`, then uncomment the line below to display it. A real screenshot drastically increases discoverability and trust.*
+![Main UI](docs/screenshot-main.png)
 
-<!-- ![Main UI](docs/screenshot-main.png) -->
+> Main window: grouped host tree on the left, searchable host grid on the right. Double-click a host to launch UltraVNC Viewer in Full Control mode.
 
 ---
 
