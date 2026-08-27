@@ -27,7 +27,7 @@ Built for internal-network Ops — hospital check-up centers, server rooms, camp
 
 ## 📸 Screenshots
 
-> 📌 *Add your running main-window screenshot as `docs/screenshot-main.png`, then uncomment the line below to display it. A real screenshot drastically increases discoverability and trust.*
+> 📌 *Screenshots are **not included yet**. To add one: run the app, capture your main window, save it as `docs/screenshot-main.png`, then uncomment the line below to display it. A real screenshot drastically increases discoverability and trust.*
 
 <!-- ![Main UI](docs/screenshot-main.png) -->
 
