@@ -1,0 +1,16 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+
+# WorkBuddy project data (skill/memory/outputs — NOT a temp cache, but should not be committed)
+.workbuddy/
+
+# Runtime local database (generated at runtime, contains user private data)
+*.db
+
+# OS / editor temp
+Thumbs.db
+.DS_Store
