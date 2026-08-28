@@ -307,7 +307,7 @@
             <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
         </Style>
 
-        <!-- ===== 搜索框（圆角、内置前缀图标、聚焦高亮） ===== -->
+        <!-- ===== 搜索框（圆角、内置前缀图标、聚焦高亮、空时水印提示） ===== -->
         <Style x:Key="SearchTextBox" TargetType="TextBox">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
@@ -322,7 +322,8 @@
                     <ControlTemplate TargetType="TextBox">
                         <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="13" SnapsToDevicePixels="True">
                             <Grid>
-                                <TextBlock Text="&#xE721;" FontFamily="{StaticResource IconFont}" FontSize="13" Foreground="{StaticResource SubTextBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                <TextBlock x:Name="Icon" Text="&#xE721;" FontFamily="{StaticResource IconFont}" FontSize="13" Foreground="{StaticResource SubTextBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                <TextBlock x:Name="Watermark" Text="搜索..." FontSize="13" Foreground="#9CA3AF" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="28,0,0,0" IsHitTestVisible="False" Visibility="Collapsed"/>
                                 <ScrollViewer x:Name="PART_ContentHost" Margin="0" Padding="0" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" VerticalAlignment="Center"/>
                             </Grid>
                         </Border>
@@ -333,6 +334,13 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Bd" Property="BorderBrush" Value="#9CA3AF"/>
                             </Trigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value=""/>
+                                    <Condition Binding="{Binding IsKeyboardFocused, RelativeSource={RelativeSource TemplatedParent}}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter TargetName="Watermark" Property="Visibility" Value="Visible"/>
+                            </MultiDataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
