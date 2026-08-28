@@ -130,10 +130,10 @@
 
                 <!-- 第 0 行：左侧操作按钮 + 右侧搜索框 -->
                 <Border Grid.Row="0" Background="{StaticResource HeaderBrush}"
-                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="8,6">
                     <DockPanel LastChildFill="False">
                         <!-- 右侧搜索框：按名称/IP/备注实时筛选当前分组 -->
-                        <TextBox x:Name="SearchBox" DockPanel.Dock="Right" Style="{StaticResource SearchTextBox}" Width="220"
+                        <TextBox x:Name="SearchBox" DockPanel.Dock="Right" Style="{StaticResource SearchTextBox}" Width="240" Margin="0,0,4,0"
                                  ToolTip="按显示名称 / IP / 备注实时筛选当前分组主机"
                                  TextChanged="SearchBox_TextChanged"/>
 
@@ -164,13 +164,13 @@
                         <Button x:Name="BtnConnectFull" Style="{StaticResource ToolButton}" Click="BtnConnectFull_Click" ToolTip="完全控制连接（双击列表也可）">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="&#xE768;" FontFamily="{StaticResource IconFont}" FontSize="14" Margin="0,0,6,0" VerticalAlignment="Center"/>
-                                <TextBlock Text="完全控制连接" VerticalAlignment="Center"/>
+                                <TextBlock Text="完全控制" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
                         <Button x:Name="BtnConnectView" Style="{StaticResource DefaultButton}" Click="BtnConnectView_Click" ToolTip="仅查看连接">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="&#xE774;" FontFamily="{StaticResource IconFont}" FontSize="14" Margin="0,0,6,0" VerticalAlignment="Center"/>
-                                <TextBlock Text="仅查看连接" VerticalAlignment="Center"/>
+                                <TextBlock Text="仅查看" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
                         </StackPanel>
