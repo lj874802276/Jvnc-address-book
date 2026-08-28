@@ -131,20 +131,17 @@
                 <!-- 第 0 行：左侧操作按钮 + 右侧搜索框 -->
                 <Border Grid.Row="0" Background="{StaticResource HeaderBrush}"
                         BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
-                    <DockPanel>
-                    <!-- 右侧搜索框：按名称/IP/备注实时筛选当前分组 -->
-                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
-                                VerticalAlignment="Center" Margin="6,0,10,0">
-                        <TextBlock Text="&#xE721;" FontFamily="{StaticResource IconFont}" FontSize="14"
-                                   Foreground="{StaticResource SubTextBrush}" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                        <TextBox x:Name="SearchBox" Width="220" Height="28"
-                                 VerticalContentAlignment="Center"
+                    <DockPanel LastChildFill="False">
+                        <!-- 右侧搜索框：按名称/IP/备注实时筛选当前分组 -->
+                        <TextBox x:Name="SearchBox" DockPanel.Dock="Right" Style="{StaticResource SearchTextBox}" Width="220"
                                  ToolTip="按显示名称 / IP / 备注实时筛选当前分组主机"
                                  TextChanged="SearchBox_TextChanged"/>
-                    </StackPanel>
 
-                    <!-- 左侧主机操作工具条 -->
-                    <ToolBar Style="{StaticResource HostToolBar}" Background="Transparent" BorderThickness="0" Margin="0">
+                        <!-- 搜索区与操作区之间的分隔线 -->
+                        <Separator DockPanel.Dock="Right" Style="{StaticResource ToolSep}" Margin="6,0,8,0"/>
+
+                        <!-- 左侧主机操作工具条 -->
+                        <ToolBar Style="{StaticResource HostToolBar}" Background="Transparent" BorderThickness="0" Margin="0">
                         <Button x:Name="BtnAddHost" Style="{StaticResource ToolButton}" Click="BtnAddHost_Click" ToolTip="新建主机">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="&#xE710;" FontFamily="{StaticResource IconFont}" FontSize="14" Margin="0,0,6,0" VerticalAlignment="Center"/>
