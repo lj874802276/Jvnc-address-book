@@ -36,6 +36,7 @@ namespace UvncAddressBook
             InitializeComponent();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
+            PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
 
         // ---------- 窗口状态 ----------
@@ -193,7 +194,6 @@ namespace UvncAddressBook
             bool has = Grid.SelectedItem is Host;
             BtnEditHost.IsEnabled = has;
             BtnDeleteHost.IsEnabled = has;
-            BtnConnectFull.IsEnabled = has;
             BtnConnectView.IsEnabled = has;
             int n = Grid.SelectedItems.Count;
             SelInfo.Text = n > 0 ? "已选 " + n + " 台" : "";
@@ -526,6 +526,62 @@ namespace UvncAddressBook
             var cols = new[] { ColDisplayName, ColIp, ColPort, ColMode };
             var vals = string.Join("|", cols.Select(c => c.ActualWidth.ToString("F0")));
             Db.SetSetting(KeyGridCols, vals);
+        }
+
+        // ---------- 键盘快捷键（提升操作流畅度） ----------
+        // Ctrl+N 新建主机 | Ctrl+F 聚焦搜索 | Ctrl+R 重命名分组
+        // F2 编辑选中主机 | Delete 删除选中主机 | Enter 连接选中主机
+        private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            // 文本输入控件（如搜索框）中不打断输入
+            if (e.OriginalSource is TextBox) return;
+            bool fromButton = e.OriginalSource is Button;
+
+            if (Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                switch (e.Key)
+                {
+                    case Key.N:
+                        BtnAddHost_Click(this, new RoutedEventArgs());
+                        e.Handled = true;
+                        break;
+                    case Key.F:
+                        SearchBox.Focus();
+                        e.Handled = true;
+                        break;
+                    case Key.R:
+                        MenuRenameGroup_Click(this, new RoutedEventArgs());
+                        e.Handled = true;
+                        break;
+                }
+            }
+            else
+            {
+                switch (e.Key)
+                {
+                    case Key.F2:
+                        if (BtnEditHost.IsEnabled)
+                        {
+                            BtnEditHost_Click(this, new RoutedEventArgs());
+                            e.Handled = true;
+                        }
+                        break;
+                    case Key.Delete:
+                        if (!fromButton && BtnDeleteHost.IsEnabled)
+                        {
+                            BtnDeleteHost_Click(this, new RoutedEventArgs());
+                            e.Handled = true;
+                        }
+                        break;
+                    case Key.Enter:
+                        if (!fromButton && Grid.SelectedItem is Host)
+                        {
+                            BtnConnectFull_Click(this, new RoutedEventArgs());
+                            e.Handled = true;
+                        }
+                        break;
+                }
+            }
         }
     }
 }
